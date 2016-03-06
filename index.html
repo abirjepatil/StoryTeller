@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+   <HEAD>
+      <TITLE>
+         A Small Hello 
+      </TITLE>
+   </HEAD>
+   <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+   <script>
+   var count = 0;
+   var steps = 0;
+   var res=[];
+   var url;
+         
+function myFunction() {
+	responsiveVoice.setDefaultVoice("UK English Male");
+ //	alert("I am here");
+    var token = "For ages, the fallen titan Sargeras plotted to scour all life from Azeroth. To this end, Sargeras possessed the human sorcerer Medivh and compelled him to contact Gul'dan, an orc warlock on the world of Draenor. There, Sargeras' demonic servants among the Burning Legion worked to corrupt the once - peaceful orcs and forge them into a bloodthirsty army known as the Horde. This cursed force invaded Azeroth through the Dark Portal, a dimensional gateway created by Medivh and Gul'dan, and clashed with the human nation of Stormwind. Aided by the half-orc Garona, human champions like Anduin Lothar fought valiantly to protect their kingdom. Yet, in the end, the mighty Horde shattered Stormwind's defenses. Amid the city's tragic fall, Garona betrayed her allies and assassinated King Llane Wrynn, sealing the nation's defeat.";
+    res = token.split(" ");
+	steps = res.length;	
+     
+     for (var i = 0; i < res.length; i++) {
+		if(res[i].search("ages")!=-1)
+  		{
+        responsiveVoice.speak(res[i]);
+        url="http://www.nosweatshakespeare.com/wp-content/uploads/2014/07/seven-stages-of-man.jpg";
+		renderUpdate();
+    	}
+  		if(res[i].search("fallen")!=-1)
+  		{
+  		url="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg";
+		responsiveVoice.speak(res[i]);
+       	}
+   }
+}
+
+
+function renderUpdate() {
+   // alert("here");
+  	// responsiveVoice.speak(res[count]);
+    count++;
+
+	// var audio = new Audio("http://www.w3schools.com/html/horse.mp3");
+ //    audio.play();
+	document.getElementById('displayHere').src = url;
+	if(count<steps)
+	{
+		//alert(count);
+		setInterval(function(){ renderUpdate(); }, 1000);
+
+	}
+    
+}
+
+
+
+
+  function changeImage(url)
+  {
+  	
+
+  }
+
+</script>
+ 
+<BODY>
+
+<input onclick="myFunction()" type='button' value='🔊 Play' />
+
+<audio controls>
+  <source src="http://www.w3schools.com/html/horse.ogg" type="audio/ogg">
+  <source src="http://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+ 
+ <iframe id="displayHere"/> 
+</BODY>
+</HTML>
